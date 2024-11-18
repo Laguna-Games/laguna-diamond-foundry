@@ -46,7 +46,7 @@ contract LibDiamondTest is Test {
         mock.emitDiamondCut(cut, fuzzAddress3, fuzzCalldata);
     }
 
-    function testDIAMOND_STORAGE_POSITION() public {
+    function testDIAMOND_STORAGE_POSITION() public pure {
         assertEq(LibDiamond.DIAMOND_STORAGE_POSITION, keccak256('diamond.standard.diamond.storage'));
         assertEq(
             LibDiamond.DIAMOND_STORAGE_POSITION,
@@ -59,7 +59,7 @@ contract LibDiamondTest is Test {
         uint96 fuzzInt1,
         address fuzzAddress2,
         uint96 fuzzInt2
-    ) public {
+    ) public pure {
         vm.assume(fuzzAddress1 != address(0));
         vm.assume(fuzzInt1 != 0);
         vm.assume(fuzzAddress2 != address(0));
@@ -76,7 +76,7 @@ contract LibDiamondTest is Test {
         assertEq(fac.functionSelectorPosition, fuzzInt2);
     }
 
-    function testFacetFunctionSelectors(bytes4 fuzzSelector1, bytes4 fuzzSelector2, uint256 fuzzUint1) public {
+    function testFacetFunctionSelectors(bytes4 fuzzSelector1, bytes4 fuzzSelector2, uint256 fuzzUint1) public pure {
         vm.assume(fuzzSelector1 != bytes4(0));
         vm.assume(fuzzSelector2 != bytes4(0));
         vm.assume(fuzzUint1 != 0);
@@ -108,14 +108,14 @@ contract LibDiamondTest is Test {
 
     //  NOTE - cut methods are tested through DiamondCutFacet and TestDiamondFactory
 
-    function testEnforceHasContractCode() public {
+    function testEnforceHasContractCode() public view {
         // Call `enforceHasContractCode` with the address of the deployed contract
         // This should pass without reverting since `testContract` has code
         try mock.enforceHasContractCode(address(mock), 'No contract code at address') {
             // This block will execute if the call does not revert
         } catch {
             // If it reverts, fail the test
-            fail('enforceHasContractCode reverted, but the address has contract code');
+            assertFalse(true, 'enforceHasContractCode reverted, but the address has contract code');
         }
     }
 

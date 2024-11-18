@@ -50,7 +50,7 @@ contract DiamondCutFacetTest is Test, TestSnapshotFactory {
         cut3.functionSelectors[0] = MockFacet.bat.selector;
     }
 
-    function testCheckSetup() public {
+    function testCheckSetup() public view {
         assertTrue(mock1.code.length > 0);
         assertTrue(mock2.code.length > 0);
         assertTrue(mock3.code.length > 0);

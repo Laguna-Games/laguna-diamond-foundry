@@ -49,7 +49,7 @@ contract LibContractOwnerTest is Test {
         assertFalse(previousOwner == newOwner, 'Ownership not changed');
     }
 
-    function testContractOwner() public {
+    function testContractOwner() public view {
         assert(mock.contractOwner() == initialOwner);
         assertFalse(mock.contractOwner() == address(0), 'Contract owner should not be address(0)');
     }
