@@ -5,8 +5,9 @@ import {LibContractOwner} from '../libraries/LibContractOwner.sol';
 import {IERC173} from '../interfaces/IERC173.sol';
 
 /// @title LG implementation of ERC-173 Contract Ownership Standard
+/// @dev This facet also implements EIP-5313
 /// @author rsampson@laguna.games
-contract DiamondOwnerFacet is IERC173 {
+contract DiamondOwnerFacet is IERC173 /*EIP5313*/ {
     /// @notice Get the address of the owner
     /// @return The address of the owner.
     function owner() external view returns (address) {

@@ -3,6 +3,7 @@ pragma solidity ^0.8.19;
 
 /// @title ERC-165 Standard Interface Detection
 /// @dev https://eips.ethereum.org/EIPS/eip-165
+/// @dev The ERC-165 identifier for this interface is 0x01ffc9a7
 interface IERC165 {
     /// @notice Query if a contract implements an interface
     /// @param interfaceID The interface identifier, as specified in ERC-165

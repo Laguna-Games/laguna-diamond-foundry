@@ -6,6 +6,7 @@ pragma solidity ^0.8.19;
 
 // A loupe is a small magnifying glass used to look at diamonds.
 // These functions look at diamonds
+/// @dev The ERC-165 identifier for this interface is 0x48e2b093
 interface IDiamondLoupe {
     /// These functions are expected to be called frequently
     /// by tools.
