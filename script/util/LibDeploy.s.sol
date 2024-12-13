@@ -41,7 +41,7 @@ struct Deploy {
 /// @notice Utility functions for working with the DiamondCutFacet
 /// @author Rob Sampson
 library LibDeploy {
-    function deployFullDiamond() public returns (Deploy memory deployment) {
+    function deployFullDiamond() internal returns (Deploy memory deployment) {
         deployment = deployBlankDiamond();
         deployment = upgradeBlankDiamondToFullDiamond(deployment);
         deployment = initializeSupportedInterfaces(deployment);
@@ -53,7 +53,7 @@ library LibDeploy {
     /// @dev This function needs to be wrapped in a vm.startBroadcast() and vm.stopBroadcast() call
     /// @dev Diamond owner will be the deployer wallet.
     /// @return The address of the deployed Diamond
-    function deployBlankDiamond() public returns (Deploy memory) {
+    function deployBlankDiamond() internal returns (Deploy memory) {
         Vm vm = getVM();
         Deploy memory deployment;
         deployment.diamondCutFacet = DiamondCutDeployLib.getInjectedOrNewFacetInstance();
@@ -142,7 +142,7 @@ library LibDeploy {
     /// @dev Specify the Implementation address in the IMPLEMENTATION_CONTRACT env var
     /// @dev A Diamond contract needs to be deployed upstream, or specified in the DIAMOND env variable
     /// @return implementation The address of the deployed CutDiamond interface contract
-    function deployCutDiamondImplementation(Deploy memory deployment) public returns (Deploy memory) {
+    function deployCutDiamondImplementation(Deploy memory deployment) internal returns (Deploy memory) {
         Vm vm = getVM();
         if (deployment.diamond == address(0) || LibDeploy.codeSize(deployment.diamond) == 0) {
             revert('No Diamond contract found');
