@@ -45,3 +45,14 @@ Run unit tests with forking.
 ```shell
 $ forge test
 ```
+
+---
+
+## Deploy a new diamond
+
+```
+export RPC_API="<http endpoint>"
+export EXPLORER_API="<blockscout endpoint>"
+
+forge script --broadcast --rpc-url "$RPC_API" --account "owner" --verify --verifier blockscout --verifier-url "$EXPLORER_API" script/Deploy.s.sol
+```
