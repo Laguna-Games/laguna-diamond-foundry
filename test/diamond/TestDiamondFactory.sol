@@ -14,19 +14,17 @@ import {SupportsInterfaceFacet} from '../../src/diamond/SupportsInterfaceFacet.s
 import {IERC165} from '../../src/interfaces/IERC165.sol';
 import {IERC173} from '../../src/interfaces/IERC173.sol';
 import {Gogogo} from '../../script/Gogogo.s.sol';
+import {LibDeploy, Deploy} from '../../script/util/LibDeploy.s.sol';
 import {TestSnapshotFactory} from './TestSnapshotFactory.t.sol';
 
 /// @title Diamond Factory
 /// @notice This factory is used by Foundry tests to "deploy" a diamond for unit testing.
 contract TestDiamondFactory is Test {
     function gogogo(address newOwner) public returns (CutDiamond cutDiamond) {
-        Gogogo setup = new Gogogo();
-        setup.gogogo();
-        cutDiamond = CutDiamond(setup.deployedDiamond());
-
-        // Transfer ownership
-        vm.prank(cutDiamond.owner());
-        cutDiamond.transferOwnership(newOwner);
+        vm.prank(newOwner);
+        Deploy memory deployment = LibDeploy.deployFullDiamond();
+        CutDiamond(deployment.diamond).transferOwnership(newOwner);
+        return CutDiamond(deployment.diamond);
     }
 
     function test() public {}
@@ -39,8 +37,8 @@ contract TestDiamondFactoryTest is Test, TestSnapshotFactory {
         TestDiamondFactory factory = new TestDiamondFactory();
         CutDiamond diamond = factory.gogogo(owner);
         assertTrue(address(diamond).code.length > 0);
-        assertEq(diamond.facets().length, 6); // diamondCut, cutSelector, deleteSelector, cutSelectors, deleteSelectors, cutFacet
-        assertEq(diamond.interfaces().length, 4); // supportsInterface, setSupportsInterface, setSupportsInterfaces, interfaces
+        assertEq(diamond.facets().length, 6); // DiamondCutFacet.diamondCut, DiamondCut(other fns) DiamondLoupeFacet, DiamondProxyFacet, DiamondOwnerFacet, SupportsInterfaceFacet
+        assertEq(diamond.interfaces().length, 5); // IERC165, IDiamondCut, IDiamondLoupe, IERC173, EIP5313
         assertTrue(diamond.supportsInterface(type(IERC165).interfaceId));
         assertTrue(diamond.supportsInterface(type(IDiamondCut).interfaceId));
         assertTrue(diamond.supportsInterface(type(IDiamondLoupe).interfaceId));
