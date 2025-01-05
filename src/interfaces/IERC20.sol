@@ -5,6 +5,7 @@ pragma solidity ^0.8.19;
 /// @title ERC-20 standard interface
 /// @notice Interface of the ERC-20 standard as defined in the ERC.
 /// @dev Adapted from OpenZeppelin: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol
+/// @dev The ERC-165 identifier for this interface is 0x36372b07
 interface IERC20 {
     /**
      * @dev Emitted when `value` tokens are moved from one account (`from`) to

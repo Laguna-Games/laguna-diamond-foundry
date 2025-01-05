@@ -45,3 +45,25 @@ Run unit tests with forking.
 ```shell
 $ forge test
 ```
+
+---
+
+## Deploy a new diamond
+
+Optionally, declare any pre-deployed facet contracts to use. If not set, a new facet will be deployed.
+```
+export DIAMOND_CUT_FACET="<DiamondCutFacet address>"
+export DIAMOND_LOUPE_FACET="<DiamondLoupeFacet address>"
+export DIAMOND_OWNER_FACET="<DiamondOwnerFacet address>"
+export DIAMOND_PROXY_FACET="<DiamondProxyFacet address>"
+export SUPPORTS_INTERFACE_FACET="<SupportsInterfaceFacet address>"
+export CUT_DIAMOND_IMPLEMENTATION=<CutDiamond implementation address>
+```
+
+
+```
+export RPC_API="<http endpoint>"
+export EXPLORER_API="<blockscout endpoint>"
+
+forge script --broadcast --rpc-url "$RPC_API" --account "owner" --verify --verifier blockscout --verifier-url "$EXPLORER_API" script/Deploy.s.sol
+```

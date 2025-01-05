@@ -6,6 +6,7 @@ pragma solidity ^0.8.19;
 * EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535
 /******************************************************************************/
 
+/// @dev The ERC-165 identifier for this interface is 0x1f931c1c
 interface IDiamondCut {
     enum FacetCutAction {
         Add,

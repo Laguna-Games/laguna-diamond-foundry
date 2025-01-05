@@ -16,6 +16,8 @@ import {IERC173} from '../src/interfaces/IERC173.sol';
 import {Script} from '../lib/forge-std/src/Script.sol';
 import {SupportsInterfaceFacet} from '../src/diamond/SupportsInterfaceFacet.sol';
 
+// DEPRECATED
+
 /// @title Gogogo
 /// @notice Deploys and initializes a Diamond
 contract Gogogo is Script {
