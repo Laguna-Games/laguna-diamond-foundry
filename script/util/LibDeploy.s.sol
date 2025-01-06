@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 // forge-ignore: 5574
 
 import {console} from '../../lib/forge-std/src/console.sol';
-import {Vm} from 'forge-std/Vm.sol';
+import {Vm} from '../../lib/forge-std/src/Vm.sol';
 
 import {CutDiamondDeployLib} from './CutDiamondDeployLib.s.sol';
 import {Diamond} from '../../src/diamond/LGDiamond.sol';

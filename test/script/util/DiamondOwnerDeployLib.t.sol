@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 import {Test} from '../../../lib/forge-std/src/Test.sol';
 import {console} from '../../../lib/forge-std/src/console.sol';
-import {Vm} from 'forge-std/Vm.sol';
+import {Vm} from '../../../lib/forge-std/src/Vm.sol';
 
 import {Diamond} from '../../../src/diamond/LGDiamond.sol';
 import {DiamondCutFacet} from '../../../src/diamond/DiamondCutFacet.sol';
