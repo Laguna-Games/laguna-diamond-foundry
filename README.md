@@ -1,14 +1,27 @@
 # Laguna Labs Diamond Template
 EIP-2535 Diamond implementation using Foundry.
 
-Developed by [Laguna Labs](https://lagunalabs.co) for [Neo Olympus]().
+![Visibility: OPEN SOURCE](https://img.shields.io/badge/visibility-OPEN_SOURCE-green)
+
+
+Developed by [Laguna Labs](https://lagunalabs.co) for [Neo Olympus](https://lagunalabs.co/neoolympus).
 
 Adapted from the Diamond 3 reference implementation by Nick Mudge:
 [https://github.com/mudgen/diamond-3-hardhat](https://github.com/mudgen/diamond-3-hardhat)
 
 ---
 
-## Setup
+## Setup (Build on this project)
+
+1. Install [Foundry](https://book.getfoundry.sh/getting-started/installation)
+2. Initialize a new project: `forge init`
+3. Install project dependencies: `forge install`
+    1. If lib/forge-std is empty: `forge install foundry-rs/forge-std`
+4. Install laguna-diamond-factory: `forge install Laguna-Games/laguna-diamond-foundry`
+
+---
+
+## Setup (Source development)
 
 1. Install [Foundry](https://book.getfoundry.sh/getting-started/installation)
 2. Install project dependencies: `forge install`
@@ -35,7 +48,7 @@ $ git submodule update --recursive
 Compile the smart contracts.
 
 ```shell
-$ forge build
+$ forge build --force
 ```
 
 ---
