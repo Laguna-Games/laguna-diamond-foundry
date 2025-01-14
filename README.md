@@ -38,7 +38,7 @@ Adapted from the Diamond 3 reference implementation by Nick Mudge:
 
 ## Update
 Pull latest library dependencies.
-```
+```shell
 $ git submodule update --recursive
 ```
 
@@ -63,18 +63,18 @@ $ forge test
 
 ## Deploy a new diamond
 
-Optionally, declare any pre-deployed facet contracts to use. If not set, a new facet will be deployed.
-```
-export DIAMOND_CUT_FACET="<DiamondCutFacet address>"
-export DIAMOND_LOUPE_FACET="<DiamondLoupeFacet address>"
-export DIAMOND_OWNER_FACET="<DiamondOwnerFacet address>"
-export DIAMOND_PROXY_FACET="<DiamondProxyFacet address>"
-export SUPPORTS_INTERFACE_FACET="<SupportsInterfaceFacet address>"
-export CUT_DIAMOND_IMPLEMENTATION=<CutDiamond implementation address>
+Optionally, declare any pre-deployed facet contracts to use. If not set, a new facet will be deployed. The addresses below are deployed for anyone to use on Ethereum mainnet: 
+```shell
+export DIAMOND_CUT_FACET=0xa91394bbaB32Fe452B020C34f93601B7B3E46988
+export DIAMOND_LOUPE_FACET=0x13B6D97803B63DfA5664F1dEB43b2cf45041B3EF
+export DIAMOND_OWNER_FACET=0xec665862F187eCf59589eF5f46745A77383a273E
+export DIAMOND_PROXY_FACET=0x2784b41Af0a74AF4ECd60c062834a865D88Fb034
+export SUPPORTS_INTERFACE_FACET=0xB86Dd140C15c5DF7D4Dc9429d5E0a5fF7d537C6C
+export CUT_DIAMOND_IMPLEMENTATION=0x20a8098a05306A1744999116e97626E5AEaa61e0
 ```
 
 
-```
+```shell
 export RPC_API="<http endpoint>"
 export EXPLORER_API="<blockscout endpoint>"
 
